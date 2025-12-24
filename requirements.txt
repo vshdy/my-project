@@ -1,0 +1,11 @@
+pandas
+dask[dataframe]
+prefect==2.*
+SQLAlchemy
+distributed
+SQLAlchemy
+pg8000
+python-dotenv
+jupyter
+matplotlib
+seaborn
