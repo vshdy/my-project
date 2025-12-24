@@ -9,3 +9,5 @@ python-dotenv
 jupyter
 matplotlib
 seaborn
+streamlit
+plotly

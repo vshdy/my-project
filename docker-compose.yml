@@ -2,7 +2,6 @@ services:
   db:
     image: postgres:16
     container_name: retail_postgres
-    restart: unless-stopped
     environment:
       POSTGRES_USER: retail_user
       POSTGRES_PASSWORD: retail_password
@@ -11,6 +10,18 @@ services:
       - "5433:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
+
+  dashboard:
+    build: .
+    container_name: retail_dashboard
+    command: streamlit run dashboards/app.py --server.port 8501 --server.address 0.0.0.0
+    ports:
+      - "8501:8501"
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+    working_dir: /app
 
 volumes:
   pgdata:
